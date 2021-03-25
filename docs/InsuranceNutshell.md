@@ -1,0 +1,37 @@
+# Insurance in a narrative nutshell
+by Zanicar, for BSC Africa Masterclass 2021.
+
+## What is insurance?
+At its core, insurance is simply an agreement or contract between two parties, where one party takes on the risk of the other for a fee. This contract is typically represented by a policy and the policy holder receives protection against an unintended outcome, such as loss or damage, which is carried by the insurer (underwriter). The insurer receives a fee for taking on this risk, and is under obligation to carry the loss in the event of a claim.
+
+Insurers leverage risk aggregation and risk pooling to mitigate the risks they carry and to provide more attractive fees (insurance premiums).
+
+### Risk aggregation and risk pooling
+If we lived in England, specifically London, during the 17th century as investors, we would have had ample opportunity to invest in merchant ships trading with British Colonies and the New World. These ships would sell goods from Britain to the colonies and return with exotic treasures, such as tabbacco and pineapples, that made very lucrative sales under British high society. However, the risks involved were significant, as storms, pirates, mutinies, colonial revolts and numerous other unintended events could completely erradicate not only our profit margins, but our entire investments.
+
+#### Aggregation
+The first strategy to effectively deal with these risks is to spread our investments over a number of ships or share our risks with other investors (risk aggregation), as the chances for all of them to encounter such unintended events are significantly reduced. For example, if the average merchant ship has a 10% (1 in 10) chance of complete loss then ten merchant ships would have a mere 0.00000001% (1 in 10,000,000,000) chance of complete loss. However, the chance for a single loss at this point is practically guaranteed, for the moment we pool 7 ships each with a 10% chance of loss we get to a 94.8% chance for a single loss, and at 10 we are guaranteed that one ship will not make it, and a further 60% chance that a second ship will be lost as well.
+
+#### Pooling
+The second strategy involves dealing with these "guaranteed losses" by pooling our risk, as we do not know which of the ten ships will not make it, only that we can reasonably expect at least one loss and likely a second. The contributions we make must be sufficient to cover the expected losses for this voyage. Thus, in the event the loss occurs we reimburse that particuar investor from the pool.
+
+### Underwriting profits and losses
+However, not every voyage will yield predictable losses, as statistics is a science of historic averages and of predictive probabilities, not an account of current events. Thus it turns out that our first voyage into the New World was a spectacular success as all ships have returned safe and sound with cargo and profits in tow. One ship has suffered minor storm damage and is repaired from the pool utilizing only a fraction of the funds. At this point we may liquidate the pool and disburse the surplus (underwriting profit) to each policy holder proportional to their initial contribution (dividends) or reallocate the funds for a subsequent voyage requireing each policy holder to only contribute the calculated difference (premium adjustment).
+
+Sadly, our next voyage turned out less fortuitous and we lost three entire ships, along with their crews and cargo to a nasty hurricane. This time around our pool does not have sufficient funds to honour all claims and a loan must be made with a creditor to cover the shortfall (underwriting loss). For our next voyage the preiums are adjusted not only to take the greater risk into consideration, but also to cover the shotfall and commensurate debt the pool has incurred.
+
+### Mutual vs Stockholder insurance
+Unfortunately, the losses we suffered during our last voyage has left some investors in a position where they cannot afford the premiums and consequently withdraw their policies. This leaves our pool severely underfunded and hugely impact our premiums as our aggregation benefits are diminished. In order to address our funding requirements we vote to demutualize the insurance and turn to a stockholder model. The insurance would no longer be "owned" by the policy holders, we will attract additinal investors just for the purpose of underwriting. The insurance now becomes stockholder owned and any underwriting profits or losses in the pool are exclusively for stockholders to benefit or bear.
+
+### Float
+One of the largest new stockholders is an investment bank and leveraging their considerable experience they conclude a plan to augment underwriting profits. Essentially, the seven remaining ships still have a mere 0.0000001% (1 in 10,000,000) chance of a complete loss and a 94.8% chance of a single loss (thus we can reasonably expect it) for which a claim will be paid out. However this claim will only occur at the end of the voyage, which takes approximately 12 months. The insurer technically owes that claim to the claimant, but being a future event there is no way to know who the claimant may be, there is also a very small chance that there may be no claim made after the voyage concludes. Thus, once the contributions are made for this voyage, the pool will be invested in another investment instrument to yield a profit while we wait for the voyage to conclude and a possible claim to be made. The float is thus the amount of premiums received and the period between receiving them and honoring claims against their active policies.
+
+### Risk of moral hazard
+Calculating each policy holder's contribution would be a straight forward matter if all things were equal, but in reality it rarely if ever is. Each policy holder may invest different amounts in different type of ships (Carrack vs Barquentine) with different loads of goods going to different target destinations presenting wildly varing risk profiles. As long as we are aggregating our risks and pooling our resources with other investors and policy holders we are at the risk of moral hazard where one party deliberately acts to the detriment of the others. One policy holder may deliberately withhold information pertaining to faced risks (such as suffering mast damage during the previous voyage), another may deliberately attempt to trade in riskier waters simply because of having the insurance policy, yet another may realize their investment is unlikely to turn a profit and then take deliberate action to ensure a loss so that they can make a claim against the pool in order to at least recover their investment. External investors (stockholder) may endeavour to pay as little claims as possible in order to maximise underwriting profits, unexpected events resulting in loss may be reclassified as an expected event not covered by the policy.
+
+**Disincentivise undesired behaviour**
+
+#### Behaviour modification
+Some actions pertaining to moral hazard can be regulated against (and often is), such as deliberately withholding relevant information (which may void a policy)and taking deliberate action to cause loss for purpose of filing a claim (insurance fraud). But, subtle psychological interactions such as acting less risk averse due to having an insurance policy cannot be regulated against. For these, insurers need to engage in behaviour modification by providing policy holders with incentives for continuing risk averse actions.
+
+**Incentivise desired behaviour**
