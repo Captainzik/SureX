@@ -50,9 +50,9 @@ Now that a number of journeys have concluded and a fair number of seasons have p
 #### Premiums
 Premiums collected from policy holders are the starting point for all revenues earned by all types of insurance operations. So what exactly do these premiums entail? Firstly, our insurance company accepts the risk of loss from our policy holders at a determined price of risk (risk premium). The overall policy premium also includes additional fees to make provision for additional expenses such as operational overheads, administrative costs, service fees, possible agent commission fees and any other business related expenses. The net premium (the remaining portion after all these expenses) is our first revenue stream and is used to fund the Risk Based Capital Pool from which we must pay any outstanding claims.
 
-[Basic premium structure](assets/chart-PremiumStructure.png)
+![Basic premium structure](assets/chart-PremiumStructure.png)
 
 #### Investments
 If our revenue earned exceeds the claims, we are making an underwriting profit. If the pool keeps growing it may far exceed the amount of funds required to honour outstanding claims (surplus) and we will be able to invest this in interest earning instruments, our second revenue stream. Further to this, we have the float (the period between receiving premiums and paying claims) that can also be invested, and this is what Buffet refers to as "borrowing" money: as the insurer is actually under obligation to pay any legitimate claims against the policy, but is free to invest any premiums received until a claim becomes due and payable. Thus, if our first stream is profitable, we are technically being paid to borrow money (the float) and invest it to generate even further (and often greater) revenues.
 
-[Insurance revenue flows](assets/diagram-RevenueModel.png)
+![Insurance revenue flows](assets/diagram-RevenueModel.png)
