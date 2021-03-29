@@ -35,18 +35,24 @@ Some actions pertaining to moral hazard can be regulated against (and often is),
 Many insurers engage in two forms of behaviour modification, namely disincentivising undesired behaviour and incentivising desired behaviour.
 
 **Disincentivise undesired Behaviour**
-With our ship insurance we may implement a mechanism that requires each ship owner to carry a small part of the risk, thus if they make a claim they must stake it by "paying up" this associated risk. This is known as an excess payment (payping for the additional risk) and serves a twofold purpose, 1) it serves to lower the overall premium and 2) it serves as a disincentive for arbitrary claims, as it requires this out of pocket payment from the policy holder when a claim is made.
+With our ship insurance we may implement a mechanism that requires each ship owner to carry a small part of the risk, thus if they make a claim they must stake it by "paying up" this associated risk. This is known as an excess payment (paying for the additional risk) and serves a twofold purpose, 1) it serves to lower the overall premium and 2) it serves as a disincentive for arbitrary claims, as it requires this out of pocket payment from the policy holder when a claim is made.
 
 **Incentivise desired behaviour**
 As part of our now stock based insurer, we may also elect to implement a mechanism to incentivise ship owners to not make unnecessary claims by allocating a small portion of the underwriting profits and/or investment income (from the float) to policy holders that make no claims over the course of the respective journeys (predefined periods), effectively refunding them a portion of the premiums paid. We may even structure this in such a way that this payout is proportional to the pool's profit performance, further incentivising the principle of mutuality.
 
 Our objective with behaviour modification is to create a situation where there is greater benefit in honouring the principle of mutuality, than there is to game the system for illegitimate individual gain.
 
-### Premiums
-Now that a number of journeys have concluded and a fair number of seasons have passed, some of us have transformed from being shipping and trading investors to being insurance investors. So our interest now include not only the business of production and trade, but of also of insurance premiums as this is the starting point for all revenues earned by all types of insurance companies.
-
 So what do these premiums entail? Firstly, the insurance company accepts the risk of loss from a policy holder at a determined price of risk (risk premium). The overall policy premium must further also make provision for additional expenses such as administrative costs, operational overheads, possible agent commission fees and any other business related expenses. The net premium is the insurer's revenue and is used to fund the risk based capital pool in order to maintain sufficient liquidity to pay any outstanding claims.
 
-
 ### Revenue model
-[elaborate on insurance revenue model and include diagrams depicting various pools utilized]
+Now that a number of journeys have concluded and a fair number of seasons have passed, some of us have transformed from being shipping and trading investors to being insurance investors. At this point our little trading insurance operation has grown into somewhat of a big deal. We have transformed from an informal group of shipping and trading investors meeting in a London coffee shop, into a full blown insurance operation (this is actually how Lloyd's of London originated). We leverage two separate revenue streams, and with prudent management and underwriting practice we can ensure that both streams are individually profitable. In fact, we may then regard this operation as being paid to borrow and invest money (as Warren Buffet wrote in a famous Berkshire Hatthaway shareholder letter). To understand this statement, let's take a closer look at the detailed revenue models.
+
+#### Premiums
+Premiums collected from policy holders are the starting point for all revenues earned by all types of insurance operations. So what exactly do these premiums entail? Firstly, our insurance company accepts the risk of loss from our policy holders at a determined price of risk (risk premium). The overall policy premium also includes additional fees to make provision for additional expenses such as operational overheads, administrative costs, service fees, possible agent commission fees and any other business related expenses. The net premium (the remaining portion after all these expenses) is our first revenue stream and is used to fund the Risk Based Capital Pool from which we must pay any outstanding claims.
+
+[Basic premium structure](https://github.com/Captainzik/SureX/docs/assets/chart-PremiumStructure.png)
+
+#### Investments
+If our revenue earned exceeds the claims, we are making an underwriting profit. If the pool keeps growing it may far exceed the amount of funds required to honour outstanding claims (surplus) and we will be able to invest this in interest earning instruments, our second revenue stream. Further to this, we have the float (the period between receiving premiums and paying claims) that can also be invested, and this is what Buffet refers to as "borrowing" money: as the insurer is actually under obligation to pay any legitimate claims against the policy, but is free to invest any premiums received until a claim becomes due and payable. Thus, if our first stream is profitable, we are technically being paid to borrow money (the float) and invest it to generate even further (and often greater) revenues.
+
+[Insurance revenue flows](https://github.com/Captainzik/SureX/docs/assets/diagram-RevenueModel.png)
