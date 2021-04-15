@@ -43,7 +43,7 @@
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import "../assets/variables.scss";
     $bluCol: #3056e2;
     $hovbluCol: #2b4abb;
