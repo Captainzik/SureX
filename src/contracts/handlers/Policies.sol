@@ -54,9 +54,7 @@ abstract contract Policies is Core, Quotes {
         token.approveTransferer(address(p));
         
         // pay initial installment
-        // no need to check allowance as policy is newly created
-        //token.approve(msg.sender, address(p), p.calculatePayment());
-        //require(p.payPolicy(), "Failed to create policy, unable to make initial payment.");
+        require(p.payPolicy(), "Failed to create policy, unable to make initial payment.");
         
         return true;
     }
@@ -64,12 +62,4 @@ abstract contract Policies is Core, Quotes {
     function accountPolicies(address account) public view returns (address[] memory) {
         return policies[account];
     }
-    
-    /*function payPolicy(Policy _policy) public payable returns (bool) {
-        require(msg.sender == _policy.holder(), "Not policy holder.");
-        uint paymentDue = _policy.calculatePayment();
-        require(token.balanceOf(_policy.holder()) >= paymentDue, "Insufficient SRX tokens to pay policy.");
-        //token.transfer(_policy.holder() , address(_policy), paymentDue);
-        return true;
-    }*/
 }
