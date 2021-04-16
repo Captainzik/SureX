@@ -1,0 +1,27 @@
+<template>
+    <div class="container-fluid">                    
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 @click="handlClick" class="h3 mb-0 text-gray-800">Overview</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Connect Wallet </a>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+            
+        </div>
+
+    </div>
+</template>
+<script>
+export default {
+    name: "Overview",
+    setup() {
+        
+    },
+}
+</script>
+<style lang="scss">
+
+</style>

@@ -1,16 +1,15 @@
 <template>
 <div>
-  <Navbar/>
   <router-view/>
 </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+
 export default {
   name: "SureX",
   components:{
-    Navbar
+    
   }
 }
 </script>
@@ -23,6 +22,7 @@ body{
   height: 100%;
   width: 100%;
   padding: 0 !important;
+  background: #fff !important;
 }
 @import "/src/assets/variables.scss";
 @font-face {

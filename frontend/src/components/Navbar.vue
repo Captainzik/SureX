@@ -19,8 +19,8 @@
                 <li class="navItem">
                     <router-link to="/">Faq</router-link> 
                 </li>
-                <li class="navItem">
-                    <router-link to="/">Claim</router-link> 
+                <li >
+                    <router-link  :to="{ name: 'MainApp'}">launch App</router-link> 
                 </li>            
             </ul>
             <a class="btn btn-primary mx-2 px-4" href="#">Sign up</a>

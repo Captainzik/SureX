@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
   <div class="home">
       <Landing/>
       <Coverage/>
@@ -13,10 +14,12 @@
   import Coverage from '../components/Home/Coverage.vue'
   import Contactus from '../components/Home/Contactus.vue'
   import Try from '../components/Home/Try.vue'
+  import Navbar from '@/components/Navbar.vue'
   
 export default {
   name: 'Home',
   components: {
+    Navbar,
     Landing,
     Coverage,
     Try,
