@@ -1,6 +1,8 @@
 <template>
+<div>
   <Navbar/>
   <router-view/>
+</div>
 </template>
 
 <script>
@@ -15,11 +17,12 @@ export default {
 
 <style lang="scss">
 html,body{
- margin: 0; padding: 0
+ margin: 0; padding: 0;
 }
 body{
   height: 100%;
   width: 100%;
+  padding: 0 !important;
 }
 @import "/src/assets/variables.scss";
 @font-face {
