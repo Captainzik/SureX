@@ -1,23 +1,19 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.3;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../Token.sol";
 
-import "./SRXToken.sol";
-
-contract SureX {
-    // Token
-    SRX public token;
+contract Core {
+     // Token
+    SRXToken public token;
     
     // Tokenomics
-    uint public opsRateBIPS;    // fee rate for operations
-
-    // Capital Pools
-    address payable public operations;
-    uint public reserveBalance;
+    uint public opsRateBIPS;            // fee rate for operations
+    uint public reserveBalance;         // must be tracked for staking mechanism
+    address payable public operations;  // operations account (contract)
     
     constructor(uint useOpsRateBIPS) {
-        token = new SRX(address(this));
+        token = new SRXToken(address(this));
         opsRateBIPS = useOpsRateBIPS;
         operations = payable(msg.sender);
     }
@@ -71,14 +67,15 @@ contract SureX {
     /**
      * @dev Buys an amount of SRX with the given reserve tokens (e.g. ETH, BNB, etc).
      */
-    function buy() payable public {
+    function buy() payable public returns (bool) {
         _buy(msg.value);
+        return true;
     }
     
     /**
      * @dev Buys the specified amount of SRX with the given reserve tokens, provided they are sufficient.
      */
-    function buy(uint amount) payable public {
+    function buy(uint amount) payable public returns (bool) {
         uint tenderAmount = calculateTenderAmount(amount);
         require(msg.value >= tenderAmount, "Insufficient value provided to buy target amount.");
         _buy(tenderAmount);
@@ -86,6 +83,7 @@ contract SureX {
             uint refund = msg.value - tenderAmount;
             payable(msg.sender).transfer(refund);
         }
+        return true;
     }
 
     /**
