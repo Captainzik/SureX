@@ -55,15 +55,36 @@
 
 
         <li class="nav-item">
-            <router-link class="nav-link " :to="{ name: 'covers'}">
+        </li>
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <router-link class="nav-link collapsed" to="#" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
                 <font-awesome-icon  class="mr-3" icon="handshake" size="1x"></font-awesome-icon>
                 <span>Policies</span>
             </router-link> 
+
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
+                    <router-link class="collapse-item " :to="{ name: 'covers'}">
+                        <!-- <font-awesome-icon  class="mr-3" icon="exclamation" size="1x"></font-awesome-icon> -->
+                        <span>All Policies</span>
+                    </router-link>
+                    <router-link class="collapse-item " :to="{ name: 'mypolicies'}">
+                        <!-- <font-awesome-icon  class="mr-3" icon="exclamation" size="1x"></font-awesome-icon> -->
+                        <span>My Policies</span>
+                    </router-link>
+                    
+                </div>
+            </div>
         </li>
+                        
        <li class="nav-item">
             <router-link class="nav-link " :to="{ name: 'claim'}">
                 <font-awesome-icon  class="mr-3" icon="exclamation" size="1x"></font-awesome-icon>
-                <span>Claim</span>
+                <span>Claims</span>
             </router-link> 
         </li>
         <li class="nav-item">

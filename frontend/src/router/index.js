@@ -7,6 +7,9 @@ import Stake from '../views/SB2/Stake.vue'
 import Swap from '../views/SB2/Swap.vue'
 import Claim from '../views/SB2/Claim.vue'
 import Assess from '../views/SB2/Assess.vue'
+import MyPolicies from '../views/SB2/MyPolicies.vue'
+import Policy from '../views/SB2/Policy.vue'
+
 
 const routes = [
   {
@@ -18,17 +21,44 @@ const routes = [
     path: '/mainapp',
     name: 'MainApp',
     component: MainApp,
-      children:[  
+    children:[  
         {
           path: '',
           name: "overview",
           component: Overview
         },
         {
+          path: '',
+          name: "mypolicies",
+          component: MyPolicies
+        },
+        {
             path: 'covers',
             name: "covers",
-            component: Covers
+            component: Covers,
+            children:[
+                {
+                  path: '',
+                  name: "allpolicies",
+                  component: Covers
+                }, 
+                {
+                  path: 'my-policies',
+                  name: "mypolicies",
+                  component: MyPolicies
+                },   
+            ]
         },
+        {
+          path: 'covers/my-policies',
+          name: "mypolicies",
+          component: MyPolicies
+        },
+        {
+          path: 'covers/policy',
+          name: "policy",
+          component: Policy
+        },  
         {
           path: 'stake',
           name: "stake",
