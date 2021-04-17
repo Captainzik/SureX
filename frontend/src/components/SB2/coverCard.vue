@@ -33,7 +33,7 @@ export default {
     },
     methods:{
         policyClicked( policyID ){
-            this.$parent.viewPolicy( policyID );
+            this.$parent.viewCover( policyID );
         }
     }
 }

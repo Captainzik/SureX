@@ -35,7 +35,7 @@
             <div v-if="selectedCover" class="col-xs-12 col-sm-6 col-md-5 ">
                 <!-- <div class="card" style="width: 18rem;"> -->
                 <div class="card mx-auto">
-                    <img :src="selectedCover.icon" class="card-img-top" alt="...">
+                    <img :src="selectedCover.icon" class="card-img-top img-fluid px-3" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ selectedCover.title }}</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -93,7 +93,7 @@ export default {
         {
           id        : 1,
           owned     : true,
-          title     : "Laptop Policy",
+          title     : "Laptop Cover",
           icon      : require("../../assets/SVGs/undraw_noted_pc9f.svg"),
           description: "Proactively brand reliable imperatives before market positioning innovation.",
           losses      : [
@@ -103,7 +103,7 @@ export default {
         {
           id    : 2,
           owned : false,
-          title : "Smartphone Policy",
+          title : "Smartphone Cover",
           icon: require("../../assets/SVGs/undraw_calling_kpbp.svg"),
           description:
             "Conveniently engineer out-of-the-box communities and front-end human capital.",
@@ -114,7 +114,7 @@ export default {
         {
           id    : 6,
           owned : true,
-          title: "Printer Policy",
+          title: "Printer Cover",
           icon: require("../../assets/SVGs/undraw_printing_invoices_5r4r.svg"),
           description: 'Uniquely engineer flexible internal or "organic" sources without.',
           losses      : [
@@ -125,8 +125,8 @@ export default {
     };
   },
   methods: {
-    //   Looks up the list of policy 
-    viewPolicy(id) {
+    //   Looks up the list of Cover 
+    viewCover(id) {
         this.covers.forEach(element => {
             if(element['id'] == id){                
                 this.selectedCover = element;
@@ -138,11 +138,11 @@ export default {
         $('#claimModal').modal('show')
         this.claim.pid = id;
         this.claim.name = name;
-        this.claim.losses = this.getPolicyByID(id).losses;
+        this.claim.losses = this.getCoverByID(id).losses;
         console.log(this.claim.losses)
     }, 
 
-    getPolicyByID(id){
+    getCoverByID(id){
         const cvs = this.covers.find((cover) => cover.id === id)
         return cvs;
     }

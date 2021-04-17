@@ -8,7 +8,6 @@ import Swap from '../views/SB2/Swap.vue'
 import Claim from '../views/SB2/Claim.vue'
 import Assess from '../views/SB2/Assess.vue'
 import MyPolicies from '../views/SB2/MyPolicies.vue'
-import Policy from '../views/SB2/Policy.vue'
 
 
 const routes = [
@@ -54,11 +53,6 @@ const routes = [
           name: "mypolicies",
           component: MyPolicies
         },
-        {
-          path: 'covers/policy',
-          name: "policy",
-          component: Policy
-        },  
         {
           path: 'stake',
           name: "stake",

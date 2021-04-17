@@ -8,7 +8,7 @@
         </div>
         </div>
         <div class="col-lg-6 col-sm-12">
-            <div class="h- TryConfigWrapper d-flex flex-column justify-content-center px-4">
+            <div class="h-100 TryConfigWrapper d-flex flex-column justify-content-center px-4">
               <div class="">
                 <p class="DescriptionsText text-center">How much cover do you need?</p>
                 <RangeSlider @mouseup="monitorVal($event,1)" class="mb-3" :max="2000" :min="1" :units="'$'" :pre="true"/>
