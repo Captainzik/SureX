@@ -8,8 +8,7 @@
                     <i class="fas fa-laugh-wink"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3"> 
-                    <img src="../../assets/Icons/SureX_Logo.png" alt="{{ appname }}">
-                     
+                    <img src="../../assets/Icons/SureX_Logo.png" alt="{{ appname }}">                     
                 </div>
             </a>
 
@@ -17,30 +16,31 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Overview</span></a>
+            <li class="nav-item">
+                <router-link class="nav-link " :to="{ name: 'home'}">
+                    <font-awesome-icon  class="mr-3" icon="home" size="1x"></font-awesome-icon>
+                    <span>Surex Home</span>
+                </router-link>
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider"/>
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Basics
             </div>
 
              <li class="nav-item">
                 <router-link class="nav-link " :to="{ name: 'overview'}">
-                    <font-awesome-icon  class="mr-1" icon="tachometer-alt" size="xs"></font-awesome-icon>
+                    <font-awesome-icon  class="mr-3" icon="tachometer-alt" size="1x"></font-awesome-icon>
                     <span>Overview</span>
                 </router-link> 
             </li>
 
             <li class="nav-item">
                 <router-link class="nav-link " :to="{ name: 'swap'}">
-                    <font-awesome-icon  class="mr-1" icon="sync-alt" size="xs"></font-awesome-icon>
+                    <font-awesome-icon  class="mr-3" icon="sync-alt" size="1x"></font-awesome-icon>
                     <span>Swap</span>
                 </router-link> 
             </li>
@@ -56,19 +56,19 @@
 
         <li class="nav-item">
             <router-link class="nav-link " :to="{ name: 'covers'}">
-                <font-awesome-icon  class="mr-1" icon="handshake" size="xs"></font-awesome-icon>
+                <font-awesome-icon  class="mr-3" icon="handshake" size="1x"></font-awesome-icon>
                 <span>Policies</span>
             </router-link> 
         </li>
        <li class="nav-item">
             <router-link class="nav-link " :to="{ name: 'claim'}">
-                <font-awesome-icon  class="mr-1" icon="exclamation" size="xs"></font-awesome-icon>
+                <font-awesome-icon  class="mr-3" icon="exclamation" size="1x"></font-awesome-icon>
                 <span>Claim</span>
             </router-link> 
         </li>
         <li class="nav-item">
             <router-link class="nav-link " :to="{ name: 'assess'}">
-                <font-awesome-icon  class="mr-1" icon="glasses" size="xs"></font-awesome-icon>
+                <font-awesome-icon  class="mr-3" icon="glasses" size="1x"></font-awesome-icon>
                 <span>Assess</span>
             </router-link> 
         </li>
@@ -78,9 +78,10 @@
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <!-- <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div> -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle">
+                </button>
+            </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -99,10 +100,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/variables.scss";
-    .sidebar .nav-item{
-        font-size: larger;
-    }
+@import "../../assets/variables.scss";    
+        
     .bg-gradient-surex{
         background-color: $greenDarkCol;
         background-image: linear-gradient( 220deg , $greenDarkCol 4%, $bluCol 40%,);

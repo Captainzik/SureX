@@ -11,7 +11,7 @@ import Assess from '../views/SB2/Assess.vue'
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {

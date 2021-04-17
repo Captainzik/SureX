@@ -9,6 +9,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 
 import "@/assets/SB2/sb-admin-2.scss";
 
+
+
 library.add( fas, fab )
 
 // window.$ = window.jQuery = require("jquery");
@@ -16,13 +18,6 @@ library.add( fas, fab )
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
 
-//     require('bootstrap');
-// try {
-//     window.Popper = require('popper.js').default;
-//     window.$ = window.jQuery = require('jquery');
-
-//     require('bootstrap');
-// } catch (e) {}
 
 createApp(App)
     .component("font-awesome-icon", FontAwesomeIcon)
