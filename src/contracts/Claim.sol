@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./Policy.sol";
 import "./Token.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "./external/@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 
 contract Claim {
