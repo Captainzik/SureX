@@ -58,5 +58,5 @@ contract Claim {
             success = true;
         }
     }
-    
+    //Todo claim assesment, voting for and against claims, verdict of the assesment 
 }
