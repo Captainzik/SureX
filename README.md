@@ -12,7 +12,7 @@ How We Contributed
 Contributions: Backend, Documentation, Business Model and Contract Logic.
 
 2. Samuel Ngozika Anyanwu: Team Leader;
-Contributions: Backend, Business and Contract Logic.
+Contributions: Backend, Video production, Business and Contract Logic.
 
 3. Marcelle Labuschagne: Director of Design;
 Contributions: UI/UX and Documentation.
