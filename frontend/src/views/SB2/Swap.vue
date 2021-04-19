@@ -95,11 +95,11 @@ export default {
     inject  : ['contract', 'web3', 'userAddr'],
     data(){
         return{
-            rsvToken        : null,
-            ntvToken        : null,
-            oneRSV          : 2.54,
-            oneNTV          : 2.54,
-            minTxn          : 0.2,
+            rsvToken        : 0,
+            ntvToken        : 0,
+            oneRSV          : 0,
+            oneNTV          : 0,
+            minTxn          : 0,
             rsvFocus        : false,
             ntvFocus        : false,
         }
@@ -114,8 +114,8 @@ export default {
          * Helps in figuring out which field is being edited 
          */
         focusedTkn(e){
-            if(e.target.name=="rsvToknVal"){ this.rsvFocus = true; this.ntvFocus = false }
-            if(e.target.name=="ntvToknVal"){ this.rsvFocus = false; this.ntvFocus = true }
+            if(e.target.name=="rsvToknVal"){ this.rsvFocus = true; this.ntvFocus = false; this.rsvToken=null }
+            if(e.target.name=="ntvToknVal"){ this.rsvFocus = false; this.ntvFocus = true; this.ntvToken=null }
         },
 
         /**
@@ -126,10 +126,8 @@ export default {
 
             if( this.rsvFocus && Number(this.rsvToken) > 0 ){
                 this.ntvToken = await this.calculateMintAmount(this.rsvToken)
-                console.log("TO NTV");
             }
             else if( this.ntvFocus && Number(this.ntvToken) > 0){
-                console.log("TO RSV");
                 this.rsvToken = await this.calculateTenderAmount(this.ntvToken)
             }
             else{
@@ -170,15 +168,15 @@ export default {
         /**
          * Buys SRX in echange of RSV tokens
          */
-        async getNTVtkn( ntvVal ){
+        async getNTVtkn( _ntvVal ){
             let refVar = this
             this.contract.methods.buy().send({
                 from  : this.userAddr,
-                value : this.Power18(ntvVal)
+                value : this.Power18(_ntvVal)
             })
             .on('receipt', ( receipt )=>{ 
                 console.log(receipt.events);
-                if( receipt.status ){ refVar.showSuccessMsg(`Swapped ${refVar.ntvVal} BNB for SRX successfully`) }
+                if( receipt.status ){ refVar.showSuccessMsg(`Swapped ${_ntvVal} BNB for SRX successfully`) }
             } )
             .on('error', (err) =>{ refVar.showErrorMsg(err.message) } )
         },
@@ -187,10 +185,11 @@ export default {
          * Get RSV in exchange for NTV
          */
         async getRSVtkn(_srxVal){
+            console.log( _srxVal );
             let refVar = this
-            this.contract.methods.sell( _srxVal ).send({
+            this.contract.methods.sell( this.Power18(_srxVal) ).send({
                 from  : this.userAddr,
-                value : this.Power18(_srxVal)
+                value : 0
             })
             .on('receipt', ( receipt )=>{ 
                 console.log(receipt.events);
