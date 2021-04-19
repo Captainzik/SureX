@@ -80,21 +80,31 @@
                 </div>
             </div>
         </li>
-                        
-       <li class="nav-item">
-            <router-link class="nav-link " :to="{ name: 'claim'}">
+
+        <li class="nav-item">
+            <router-link class="nav-link collapsed" to="#" data-toggle="collapse" data-target="#claimUtilities"
+                aria-expanded="true" aria-controls="claimUtilities">
                 <font-awesome-icon  class="mr-3" icon="exclamation" size="1x"></font-awesome-icon>
                 <span>Claims</span>
             </router-link> 
-        </li>
-        <li class="nav-item">
-            <router-link class="nav-link " :to="{ name: 'assess'}">
-                <font-awesome-icon  class="mr-3" icon="glasses" size="1x"></font-awesome-icon>
-                <span>Assess</span>
-            </router-link> 
-        </li>
 
-
+            <div id="claimUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
+                    <router-link class="collapse-item " :to="{ name: 'claims'}">
+                        <!-- <font-awesome-icon  class="mr-3" icon="exclamation" size="1x"></font-awesome-icon> -->
+                        <span>Claims</span>
+                    </router-link>
+                    <router-link class="collapse-item " :to="{ name: 'assess'}">
+                        <!-- <font-awesome-icon  class="mr-3" icon="exclamation" size="1x"></font-awesome-icon> -->
+                        <span>Assess</span>
+                    </router-link>
+                    
+                </div>
+            </div>
+        </li>
+        
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

@@ -9,7 +9,7 @@
                             Connect Wallet
                         </a>
                     </div>
-
+<hr>
                     <!-- Content Row -->
                     <div class="row">
     

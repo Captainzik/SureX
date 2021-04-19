@@ -3,7 +3,7 @@
     <PolicyModal ref="policmod"/>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 @click="handlClick" class="h3 mb-0 text-gray-800">Policies</h1>
+      <h1 @click="handlClick" class="h3 mb-0 text-gray-800">Covered Items</h1>
       <div>
         <router-link :to="{ name: 'covers'}"
           class="d-none d-sm-inline-block btn btn-sm btn-outline-success active mr-3">
@@ -25,7 +25,7 @@
         Connect Wallet
       </router-link>
     </div>
-
+    <hr>
     <!-- Content Row -->
     <div class="row">
       <section id="Covers" class="container">     
@@ -50,6 +50,7 @@ export default {
     coverCard,
     PolicyModal
   },
+  inject : ['covers'],
   computed:{
       premium(){
           // Calculation of Premiums
@@ -69,68 +70,7 @@ export default {
   data() {
     return {
       svgBaseDit: "../../assets/SVGs/",
-      covers: [
-        {
-          id      : 1,
-          owned   : false,
-          title   : "Laptop Cover",
-          icon    : require("../../assets/SVGs/undraw_noted_pc9f.svg"),
-          description: "Proactively brand reliable imperatives before market positioning innovation.",
-          losess      : [
-              "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-          ]
-        },
-        {
-          id    : 2,
-          owned : false,
-          title : "Smartphone Cover",
-          icon: require("../../assets/SVGs/undraw_calling_kpbp.svg"),
-          description: "Conveniently engineer out-of-the-box communities and front-end human capital.",
-          losess      : [
-              "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-          ]
-        },
-        {
-          id    : 3,
-          owned : false,
-          title : "Camera Cover",
-          icon: require("../../assets/SVGs/undraw_Camera_re_cnp4.svg"),
-          description: "Efficiently engineer seamless portals rather than visionary mindshare.",
-          losess      : [
-              "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-          ]
-        },
-        {
-          id    : 4,
-          owned : false,
-          title : "Bicycle Covers",
-          icon: require("../../assets/SVGs/undraw_Ride_a_bicycle_2yok.svg"),
-          description: "Holisticly implement emerging expertise through empowered mindshare.",
-          losess      : [
-              "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-          ]
-        },
-        {
-          id    : 5,
-          owned : false,
-          title : "Game-Controller Cover",
-          icon: require("../../assets/SVGs/undraw_gaming_6oy3.svg"),
-          description: "Authoritatively maintain standardized applications after premier markets.",
-          losess      : [
-              "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-          ]
-        },
-        {
-          id    : 6,
-          owned : true,
-          title: "Printer Cover",
-          icon: require("../../assets/SVGs/undraw_printing_invoices_5r4r.svg"),
-          description: 'Uniquely engineer flexible internal or "organic" sources without.',
-          losess      : [
-              "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-          ]
-        },
-      ],
+      
     };
   },
   methods: {

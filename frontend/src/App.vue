@@ -1,16 +1,82 @@
 <template>
-<div>
-  <router-view/>
-</div>
+  <div>
+      <router-view/>
+  </div>
 </template>
 
 <script>
-
+import { provide } from '@vue/runtime-core';
 export default {
-  name: "SureX",
-  components:{
-    
-  }
+    name: "SureX",    
+    provide:  {
+        covers: [
+          {
+            id      : 1,
+            owned   : true,
+            title   : "Laptop Cover",
+            icon    : require("./assets/SVGs/undraw_noted_pc9f.svg"),
+            description: "Proactively brand reliable imperatives before market positioning innovation.",
+            losess      : [
+                "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
+            ]
+          },
+          {
+            id    : 2,
+            owned : true,
+            title : "Smartphone Cover",
+            icon: require("./assets/SVGs/undraw_calling_kpbp.svg"),
+            description: "Conveniently engineer out-of-the-box communities and front-end human capital.",
+            losess      : [
+                "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
+            ]
+          },
+          {
+            id    : 3,
+            owned : false,
+            title : "Camera Cover",
+            icon: require("./assets/SVGs/undraw_Camera_re_cnp4.svg"),
+            description: "Efficiently engineer seamless portals rather than visionary mindshare.",
+            losess      : [
+                "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
+            ]
+          },
+          {
+            id    : 4,
+            owned : false,
+            title : "Bicycle Covers",
+            icon: require("./assets/SVGs/undraw_Ride_a_bicycle_2yok.svg"),
+            description: "Holisticly implement emerging expertise through empowered mindshare.",
+            losess      : [
+                "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
+            ]
+          },
+          {
+            id    : 5,
+            owned : false,
+            title : "Game-Controller Cover",
+            icon: require("./assets/SVGs/undraw_gaming_6oy3.svg"),
+            description: "Authoritatively maintain standardized applications after premier markets.",
+            losess      : [
+                "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
+            ]
+          },
+          {
+            id    : 6,
+            owned : true,
+            title: "Printer Cover",
+            icon: require("./assets/SVGs/undraw_printing_invoices_5r4r.svg"),
+            description: 'Uniquely engineer flexible internal or "organic" sources without.',
+            losess      : [
+                "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
+            ]
+          },
+        ],      
+    },
+    data(){
+      return{
+
+      }
+    }
 }
 </script>
 

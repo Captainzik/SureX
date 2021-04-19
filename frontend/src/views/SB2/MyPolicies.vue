@@ -5,15 +5,15 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 @click="handlClick" class="h3 mb-0 text-gray-800">My Policies</h1>
+      <h1 @click="handlClick" class="h3 mb-0 text-gray-800">My Items</h1>
       <div>
         <router-link :to="{ name: 'covers'}"
           class=" d-sm-inline-block btn btn-sm btn-outline-success  mr-3">
-          Covers
+          Covered Items
         </router-link>
         <router-link :to="{ name: 'mypolicies'}"
         class=" d-sm-inline-block btn btn-sm btn-outline-success active ">
-          My Policies
+          My Items
         </router-link>
 
       </div>
@@ -27,6 +27,7 @@
         Connect Wallet
       </router-link>
     </div>
+    <hr>
 
     <!-- Content Row -->
     <div class="row">
@@ -61,7 +62,7 @@
             </div>
             <div class="mx-auto col-xs-12 col-sm-6 col-md-7">
                 <div class="row">
-                    <div class="col-lg-6 col-md-12" :key="cover.index" v-for="cover in covers" >
+                    <div class="col-lg-6 col-md-12" :key="cover.index" v-for="cover in myCovers" >
                         <coverCard class="" :cover="cover" />
                     </div>
                 </div>
@@ -74,64 +75,29 @@
 <script>
 import coverCard from "../../components/SB2/coverCard.vue"
 import ClaimModal from "../../components/SB2/claimModal.vue"
-import Claim from './Claim.vue';
 export default {
   name: "Covers",
   components: {
       coverCard,
       ClaimModal
   },
+  inject: [ 'covers' ],
   data() {
     return {
       selectedCover: null,
+      myCovers : [],
       claim: {
           pid       : null,
           name      : null,
           losses    : null,
       },
-      covers: [
-        {
-          id        : 1,
-          owned     : true,
-          title     : "Laptop Cover",
-          icon      : require("../../assets/SVGs/undraw_noted_pc9f.svg"),
-          description: "Proactively brand reliable imperatives before market positioning innovation.",
-          losses      : [
-              "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-          ]
-        },
-        {
-          id    : 2,
-          owned : false,
-          title : "Smartphone Cover",
-          icon: require("../../assets/SVGs/undraw_calling_kpbp.svg"),
-          description:
-            "Conveniently engineer out-of-the-box communities and front-end human capital.",
-        losses      : [
-            "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-        ]
-        },
-        {
-          id    : 6,
-          owned : true,
-          title: "Printer Cover",
-          icon: require("../../assets/SVGs/undraw_printing_invoices_5r4r.svg"),
-          description: 'Uniquely engineer flexible internal or "organic" sources without.',
-          losses      : [
-              "Cracked Screen", "Bricked Motherboard", "Faulty Power Systems", "Faulty Keyboard","Theft"
-          ]
-        },
-      ],
+   
     };
   },
   methods: {
     //   Looks up the list of Cover 
     viewCover(id) {
-        this.covers.forEach(element => {
-            if(element['id'] == id){                
-                this.selectedCover = element;
-            }
-        });
+        this.selectedCover = this.getCoverByID(id)
     },
 
     makeClaim(id, name, losses){
@@ -148,7 +114,15 @@ export default {
     }
 
   },
-  mounted() {},
+  mounted() {
+    // this.myCovers = 
+    this.covers.forEach(element => {
+        if( element['owned'] == true ){
+          this.myCovers.push(element)
+
+        }
+    });
+  },
 };
 </script>
 <style lang="scss">

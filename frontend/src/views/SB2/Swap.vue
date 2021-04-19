@@ -8,7 +8,7 @@
                  Connect Wallet
             </a>
         </div>
-
+        <hr>
         <!-- Content Row -->
         <div class="row">
             <div class="container">
@@ -55,7 +55,7 @@
                                 <span>1 BNB</span> <sub class="font-weight-light">(BNB/SRX) </sub>
                             </div>
                             <div class="col-6 text-right">
-                                ~ {{ bnbsrx }}&nbsp;<sup class="font-weight-lighter">SRX</sup>
+                                ~ {{ oneRSV.toFixed(3) }}&nbsp;<sup class="font-weight-lighter">SRX</sup>
                             </div>
                         </div>
                         <div class="row py-2 border-bottom swap-detail-item">
@@ -63,7 +63,7 @@
                                 <span>1 SRX</span>&nbsp;<sub>(SRX/BNB) </sub>
                             </div>
                             <div class="col-6 text-right">
-                                ~ {{ srxbnb }} <sup class="font-weight-lighter">BNB</sup>
+                                ~ {{ Number(oneNTV).toFixed(3) }} <sup class="font-weight-lighter">BNB</sup>
                             </div>
                         </div>
                         <div class="row py-2 border-bottom swap-detail-item">
@@ -91,58 +91,132 @@
 </template>
 <script>
 export default {
-    name: "Swap",
-    setup() {
-        
-    },
+    name        : "Swap",
+    inject  : ['contract', 'web3', 'userAddr'],
     data(){
         return{
-            rsvToken    : null,
-            ntvToken    : null,
-            bnbsrx      : 2.54,
-            minTxn      : 0.2,
-            rsvFocus    : false,
-            ntvFocus    : false,
+            rsvToken        : null,
+            ntvToken        : null,
+            oneRSV          : 2.54,
+            oneNTV          : 2.54,
+            minTxn          : 0.2,
+            rsvFocus        : false,
+            ntvFocus        : false,
         }
     },
     computed:{
         srxbnb(){
             return Number(1/Number(this.bnbsrx)).toFixed(5)
-        }
+        },
     },
     methods:{
-        // Helps in figuring out which field is being edited 
+        /**
+         * Helps in figuring out which field is being edited 
+         */
         focusedTkn(e){
             if(e.target.name=="rsvToknVal"){ this.rsvFocus = true; this.ntvFocus = false }
             if(e.target.name=="ntvToknVal"){ this.rsvFocus = false; this.ntvFocus = true }
         },
 
-        // Update values in the token fields
-        // Depends ont focusedTkn()
-        updateVals(e){
-            if( this.rsvFocus ){
-                this.ntvToken =  this.rsvToken * this.bnbsrx
+        /**
+         * Update values in the token fields
+         * Depends ont focusedTkn()
+         */
+        async updateVals(e){
+
+            if( this.rsvFocus && Number(this.rsvToken) > 0 ){
+                this.ntvToken = await this.calculateMintAmount(this.rsvToken)
+                console.log("TO NTV");
             }
-            if( this.ntvFocus ){
-                this.rsvToken =  this.ntvToken * this.srxbnb
+            else if( this.ntvFocus && Number(this.ntvToken) > 0){
+                console.log("TO RSV");
+                this.rsvToken = await this.calculateTenderAmount(this.ntvToken)
+            }
+            else{
+                this.rsvToken = 0;
+                this.ntvToken = 0;
             }
         },
 
-        // Interact with the contract
-        triggerContractTxn(){
+        /**
+         * Interact with the contract 
+         */
+        async triggerContractTxn(){
             // Prevent swapping null tokens 
             if( Number(this.ntvToken) == 0 || Number(this.rsvToken) == 0 ){
                 alert(`Cannot swap between ${this.ntvToken} BNB and ${this.rsvToken} SRX`)
                 return;
             }
+            if (this.rsvFocus) this.getNTVtkn(this.rsvToken)
+            if (this.ntvFocus) this.getRSVtkn(this.ntvToken)
+        },
 
-            // WEB3 CODE GOES HERE
+        async calculateMintAmount(_rsvTokens){
+            let ntvWei = await this.contract.methods.calculateMintAmount(this.Power18(_rsvTokens)).call()
+            return this._18Root(ntvWei)
+        },
 
+        async calculateTenderAmount(_ntvTokens){
+            let rsvWei = await this.contract.methods.calculateTenderAmount(this.Power18(_ntvTokens)).call()
+            return this._18Root(rsvWei)
+            
+        },
 
+        async calculateMinimumMintAmount(  ){
+            let rsvWei = await this.contract.methods.calculateMinimumMintAmount().call()
+            return this._18Root(rsvWei)
+        },
 
-        }
+        /**
+         * Buys SRX in echange of RSV tokens
+         */
+        async getNTVtkn( ntvVal ){
+            let refVar = this
+            this.contract.methods.buy().send({
+                from  : this.userAddr,
+                value : this.Power18(ntvVal)
+            })
+            .on('receipt', ( receipt )=>{ 
+                console.log(receipt.events);
+                if( receipt.status ){ refVar.showSuccessMsg(`Swapped ${refVar.ntvVal} BNB for SRX successfully`) }
+            } )
+            .on('error', (err) =>{ refVar.showErrorMsg(err.message) } )
+        },
 
+        /**
+         * Get RSV in exchange for NTV
+         */
+        async getRSVtkn(_srxVal){
+            let refVar = this
+            this.contract.methods.sell( _srxVal ).send({
+                from  : this.userAddr,
+                value : this.Power18(_srxVal)
+            })
+            .on('receipt', ( receipt )=>{ 
+                console.log(receipt.events);
+                if( receipt.status ){ refVar.showSuccessMsg(`Swapped ${_srxVal} SRX for BNB successfully`) }
+            } )
+            .on('error', (err) =>{ refVar.showErrorMsg(err.message) } )
+        },
+
+        showErrorMsg( err ){
+            alert( err )
+        },
+
+        showSuccessMsg( msg ){
+            alert( msg )
+        },
+
+        Power18(val){ return String(val * 10**18)  },
+        _18Root(val){ return val/(10**18) }
+
+    },
+    async mounted(){
+        this.oneRSV = await this.calculateMintAmount(1)
+        this.oneNTV = await this.calculateTenderAmount(1)
+        this.minTxn = await this.calculateMinimumMintAmount()
     }
+    
 
 }
 </script>

@@ -65,7 +65,7 @@ const routes = [
         },
         {
           path: 'claim',
-          name: "claim",
+          name: "claims",
           component: Claim
         },
         {

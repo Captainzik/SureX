@@ -11,13 +11,7 @@
                     <router-link to="/">About</router-link> 
                 </li>
                 <li class="navItem">
-                    <router-link to="/">Advantages</router-link> 
-                </li>
-                <li class="navItem">
                     <router-link to="/">Documents</router-link> 
-                </li>
-                <li class="navItem">
-                    <router-link to="/">Faq</router-link> 
                 </li>
                 <li >
                     <router-link  :to="{ name: 'MainApp'}">launch App</router-link> 
