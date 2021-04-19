@@ -103,8 +103,9 @@ contract Core {
     function _sell(uint tenderAmount) internal {
         require(tenderAmount > 0, "Tendered amount must be greater than zero");
         require(token.balanceOf(msg.sender) >= tenderAmount, "Insufficient tokens to sell");
-        token.burn(msg.sender, tenderAmount);
         uint refundAmount = calculateRefundAmount(tenderAmount);
+        
+        token.burn(msg.sender, tenderAmount);
         payable(msg.sender).transfer(refundAmount);
         reserveBalance -= refundAmount;
     }
