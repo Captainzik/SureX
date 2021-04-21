@@ -8,12 +8,14 @@ import "./Core.sol";
 import "./Quotes.sol";
 
 abstract contract Policies is Core, Quotes {
-    uint public riskRateBIPS;   // default annual risk rate
+    uint public riskRateBIPS;       // default annual risk rate in BIPS
+    uint public overdueRateBIPS;    // default overdue fee rate in BIPS
     
     mapping(address => address[]) internal policies;    // account => policies
     
-    constructor() {
-        riskRateBIPS = 1000;
+    constructor(uint _defaultRiskRateBIPS, uint _overdueRateBIPS) {
+        riskRateBIPS = _defaultRiskRateBIPS;
+        overdueRateBIPS = _overdueRateBIPS;
     }
     
     /**
@@ -28,12 +30,35 @@ abstract contract Policies is Core, Quotes {
     }
     
     /**
+     * @dev Internal function to create a policy with the given parameters.
+     * Ensures the policy is added to the account lookup, and that the policy is approved for making token transfers.
+     */
+    function _createPolicy(uint _target, uint _term, uint _deposit, uint _riskRateBIPS, uint _overdueRateBIPS) internal returns (Policy) {
+        Policy p = new Policy(
+            token,
+            address(this),
+            msg.sender,
+            _target,
+            _term,
+            _deposit,
+            _riskRateBIPS,
+            _overdueRateBIPS
+        );
+        // add policy to account holder lookup
+        policies[msg.sender].push(address(p));
+        // approve policy to receive token payments
+        token.approveTransferer(address(p));
+        
+        return p;
+    }
+    
+    /**
      * @dev Creates a new policy with the given values and takes payment of the first installment.
      * msg.value must be sufficient to purchase the correct amount of tokens.
      */
     function createPolicy(uint _target, uint _term, uint _deposit) public payable returns(bool) {
         // riskRate may later be obtained via risk evaluation function / service.
-        uint _riskRateBIPS = riskRateBIPS;
+        uint _riskRate = riskRateBIPS;
         
         // obtain quote and ensure tokens are available for first installment
         CoverQuote memory q = _coverQuote(_target, _term, _deposit, riskRateBIPS);
@@ -42,16 +67,7 @@ abstract contract Policies is Core, Quotes {
         }
         
         // create policy
-        Policy p = new Policy(
-            token,
-            msg.sender,     // policy holder
-            _target,
-            _term,
-            _deposit,
-            _riskRateBIPS
-        );
-        policies[msg.sender].push(address(p));
-        token.approveTransferer(address(p));
+        Policy p = _createPolicy(_target, _term, _deposit, _riskRate, overdueRateBIPS);
         
         // pay initial installment
         require(p.payPolicy(), "Failed to create policy, unable to make initial payment.");

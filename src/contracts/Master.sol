@@ -5,5 +5,14 @@ import "./handlers/Core.sol";
 import "./handlers/Policies.sol";
 
 contract SureXMaster is Core, Policies {
-    constructor(uint useOpsRateBIPS) Core(useOpsRateBIPS) {}
+    constructor(
+        uint useOpsRateBIPS,
+        uint useDefaultRiskRateBIPS,
+        uint useOverdueFeeRateBIPS
+    ) Core(
+        useOpsRateBIPS
+    ) Policies(
+        useDefaultRiskRateBIPS,
+        useOverdueFeeRateBIPS
+    ){}
 }
