@@ -1,15 +1,17 @@
 <template>
-  <section id="TrySection" class="MajorSection">
+  <section id="TrySection" class="MajorSection my-5 py-5">
     <div class="container h-100">
-      <div class="row h-100 tryWrapper">
-        <div class="col-12 d-flex flex-column justify-content-center">
+      <div class="row mb-5">
+        <div class="col-12 d-flex flex-column justify-content-center my-2">
           <div class="TryTitle">
-            <span class="pt-2 pb-3">Try and Buy</span>
+            <span class="pt-2 pb-3 py-3">Try and Buy</span>
           </div>
         </div>
+      </div>
+      <div class="row h-100 tryWrapper">
         <div class="col-lg-6 col-sm-12">
           <div
-            class="h-100 TryConfigWrapper d-flex flex-column justify-content-center px-4"
+            class=" TryConfigWrapper d-flex flex-column justify-content-center px-4"
           >
             <div class="">
               <p class="DescriptionsText text-center">
@@ -55,9 +57,9 @@
         </div>
         <div class="col-lg-6 d-flex flex-column justify-content-center px-4">
           <div
-            class="policyOverviewWrapper d-flex flex-column justify-content-center align-items-center"
+            class="policyOverviewWrapper d-flex flex-column justify-content-center align-items-center py-5"
           >
-            <div class="policyOverview">
+            <div class="policyOverview my-5">
               <div class="title">Policy Overview</div>
               <div class="paramsBriefWrapper py-3">
                 <div class="paramsBrief d-flex flex-column py-4">
@@ -110,6 +112,7 @@
 </template>
 
 <script>
+import Web3 from 'web3';
 import RangeSlider from "../RangeSlider.vue";
 export default {
   name: "Try",
@@ -139,9 +142,10 @@ export default {
   },
   data() {
     return {
-      configCover: 0,
-      configPeriod: 0,
-      configDepo: 0,
+      configCover   : 0,
+      configPeriod  : 0,
+      configDepo    : 0,
+      contract      : null,
     };
   },
   methods: {
@@ -165,7 +169,16 @@ export default {
         }
       }
     },
+    async calculatePolicy(_target, _term, _deposit){
+        await this.contract.methods.requestForCover().call()
+    }
   },
+  mounted(){
+      web3            = new Web3(Web3.givenProvider || "http://localhost:8545");
+      const address   = "0x67a8f9Be3B7089b6EED44607Bd6F59A527D9A6d1";
+      const abi       = [{"inputs":[{"internalType":"uint256","name":"useOpsRateBIPS","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"accountPolicies","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"availableReserveBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"buy","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"buy","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"calculateMinimumMintAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tenderAmount","type":"uint256"}],"name":"calculateMintAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tenderAmount","type":"uint256"}],"name":"calculateRefundAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"targetAmount","type":"uint256"}],"name":"calculateTenderAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_target","type":"uint256"},{"internalType":"uint256","name":"_term","type":"uint256"},{"internalType":"uint256","name":"_deposit","type":"uint256"}],"name":"createPolicy","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"operations","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"opsRateBIPS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_target","type":"uint256"},{"internalType":"uint256","name":"_term","type":"uint256"},{"internalType":"uint256","name":"_deposit","type":"uint256"}],"name":"requestForCover","outputs":[{"components":[{"internalType":"uint256","name":"target","type":"uint256"},{"internalType":"uint256","name":"term","type":"uint256"},{"internalType":"uint256","name":"deposit","type":"uint256"},{"internalType":"uint256","name":"savingsAnnuity","type":"uint256"},{"internalType":"uint256","name":"initialCoverPremium","type":"uint256"},{"internalType":"uint256","name":"firstInstallment","type":"uint256"}],"internalType":"struct Quotes.CoverQuote","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"reserveBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"riskRateBIPS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tenderAmount","type":"uint256"}],"name":"sell","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"token","outputs":[{"internalType":"contract SRXToken","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
+      this.contract   = new web3.eth.Contract(abi, address)
+  }
 };
 </script>
 
@@ -176,11 +189,18 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  @media only screen and (min-width: 893px) {
+        height: 100vh;
+  }
+  @media only screen and (max-width: 890px) {
+        height: auto !important;
+        max-height: auto !important;
+    }
 }
 
 .policyOverviewWrapper {
   border-radius: 8px;
-  height: 100%;
+  // height: 100%;
   background-color: $greenLightCol;
   text-align: center;
   .policyOverview {
@@ -221,9 +241,10 @@ export default {
     width: 100%;
     text-align: center;
     display: block;
-    font-size: xxx-large;
+    font-size: 2.75em;
     font-family: "Gotham-Medium";
     color: $bluCol;
+    text-transform: uppercase;
   }
 }
 .tryWrapper {

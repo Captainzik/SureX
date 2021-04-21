@@ -83,12 +83,12 @@ export default {
 <style lang="scss">
 html,body{
  margin: 0; padding: 0;
+  background-color: #fff !important;
 }
 body{
   height: 100%;
   width: 100%;
   padding: 0 !important;
-  background: #fff !important;
 }
 @import "/src/assets/variables.scss";
 @font-face {
@@ -115,7 +115,6 @@ body{
    @media only screen and (max-width: 600px) {
      
      }
-    height: 100Vh;
       
   }
 .DescriptionsText{

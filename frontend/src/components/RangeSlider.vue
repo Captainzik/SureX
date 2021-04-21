@@ -4,7 +4,7 @@
     </div> -->
     <!-- <div> -->
       <div class="range-slider px-2">
-          <input @load.="handleFillEvent" @mousemove="handleFillEvent" ref="rSlider" class="range-slider__range" type="range" value="0" :min="min" :max="max">
+          <input @load="handleFillEvent" @touchstart="handleFillEvent" @mousemove="handleFillEvent" ref="rSlider" class="range-slider__range" type="range" value="0" :min="min" :max="max">
           <!-- <span class=" range-slider__value">100</span> -->
           <div class="text-center DescriptionsText">
             <span v-if="pre" > {{ units }}&nbsp;</span>

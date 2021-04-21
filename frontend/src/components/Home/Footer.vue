@@ -1,5 +1,5 @@
 <template>
-    <section id="Footer" class="my-3">
+    <section id="Footer" class="mt-4 mb-3">
         <div class="container d-flex flex-column  align-content-center">
             <div class="footerSiteName text-center">
                 hello@surex.io

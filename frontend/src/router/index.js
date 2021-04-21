@@ -22,34 +22,17 @@ const routes = [
     component: MainApp,
     children:[  
         {
-          path: '',
+          path: '/',
           name: "overview",
           component: Overview
         },
         {
-          path: '',
-          name: "mypolicies",
-          component: MyPolicies
-        },
-        {
-            path: 'covers',
+            path: 'policies',
             name: "covers",
             component: Covers,
-            children:[
-                {
-                  path: '',
-                  name: "allpolicies",
-                  component: Covers
-                }, 
-                {
-                  path: 'my-policies',
-                  name: "mypolicies",
-                  component: MyPolicies
-                },   
-            ]
         },
         {
-          path: 'covers/my-policies',
+          path: 'my-covers',
           name: "mypolicies",
           component: MyPolicies
         },

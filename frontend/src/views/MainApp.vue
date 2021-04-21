@@ -61,6 +61,18 @@ export default {
             }else if(window.web3){
                 web3 = new Web3(window.web3.currentProvider)
             }
+            // if (window.ethereum) {
+            //     try {
+            //         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            //         setAccounts(accounts);
+            //     } catch (error) {
+            //         if (error.code === 4001) {
+            //         // User rejected request
+            //         }
+
+            //         setError(error);
+            //     }
+            // }
         }
         configureWeb3()
         const address   = "0x67a8f9Be3B7089b6EED44607Bd6F59A527D9A6d1";

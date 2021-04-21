@@ -1,14 +1,15 @@
 <template>
-  <section id="LandingSection" class="MajorSection">
+  <section id="LandingSection" class="MajorSection mb-3">
     <div class="container h-100">
       <div class="row h-100 landingWrapper">
-        <div class="col-lg-5">
+        <div class="col-lg-5 col-sm-12">
           <div
-            class="LandingText d-flex flex-column justify-content-center align-items-center">
-            <div class="LandingTitle">
+            class="LandingText d-flex flex-column justify-content-center align-items-center"
+          >
+            <div class="LandingTitle my-2">
               <span> DECENTRALISED COVERAGE </span>
             </div>
-            <div class="">
+            <div class="my-2">
               <p class="LandingDescription">
                 Collaboratively brand business human capital and one-to-one
                 alignments. Compellingly underwhelm plug-and-play services and
@@ -18,8 +19,10 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-7">
-          <span class="illustrationWrapper d-flex flex-column justify-content-center">
+        <div class="col-lg-7 col-sm-12">
+          <span
+            class="illustrationWrapper d-flex flex-column justify-content-center"
+          >
             <img
               class="img-fluid"
               src="../../assets/Images/IllustrationOnly.png"
@@ -40,24 +43,25 @@ export default {
 
 <style lang="scss">
 @import "/src/assets/variables.scss";
-#LandingSection{
-    background-image: url("../../assets/Images/IllustrationBackground.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-.landingWrapper {
-//   background-image: url("../../assets/Images/Illustration.png");
-  background-size: 100%;
+#LandingSection {
+  background-image: url("../../assets/Images/IllustrationBackground.png");
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
 }
+// .landingWrapper {
+// //   background-image: url("../../assets/Images/Illustration.png");
+//   background-size: 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }
 .LandingText {
   height: 100%;
   .LandingTitle {
     span {
-      font-size: xxx-large;
+      font-size: 2.75em;
       font-family: "Gotham-Medium";
       color: $bluCol;
     }

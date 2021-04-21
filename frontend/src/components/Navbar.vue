@@ -14,7 +14,7 @@
                     <router-link to="/">Documents</router-link> 
                 </li>
                 <li >
-                    <router-link  :to="{ name: 'MainApp'}">launch App</router-link> 
+                    <router-link  :to="{ name: 'overview'}">launch App</router-link> 
                 </li>            
             </ul>
             <a class="btn btn-primary mx-2 px-4" href="#">Sign up</a>
